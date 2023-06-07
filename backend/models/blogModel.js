@@ -1,25 +1,34 @@
 const Blog = require("../schemas/blogSchema");
 
+
 exports.newPost = (req, res) => {
   const { title, body } = req.body;
 
   if (!title || !body) {
     res.status(400).json({ message: "Invalid post" });
-    return
+    return;
   }
 
+  const userId = req.user.userId;
+  console.log("User ID:", userId);
+
   Blog.create({
-    title, body
+    title,
+    body,
+    user: userId,
   })
-  .then((data) => res.status(201).json(data))
-  .catch(() => res.status(500).json({ message: "Could not create post" }));
+    .then((data) => res.status(201).json(data))
+    .catch((error) => {
+      console.log("Error:", error.message);
+      res.status(500).json({ message: "Could not create post" });
+    });
 };
 
 exports.getAllPosts = (req, res) => {
-    Blog.find()
+  Blog.find()
+    .populate("user")
     .then((data) => res.status(200).json(data))
-    .catch(() =>
-      res.status(500).json({ message: "Could not find posts" })
-    );
-}
-
+    .catch(() => {
+      res.status(500).json({ message: "Could not create post" });
+    });
+};
