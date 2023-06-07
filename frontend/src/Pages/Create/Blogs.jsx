@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link, useParams } from "react-router-dom";
 
 const Create = () => {
   const [posts, setPosts] = useState([])
@@ -17,10 +18,10 @@ const Create = () => {
       <h1 className="text-center mt-5">Latest Blogs</h1>
 
       {posts.map((post)=> (
-        <div key={post._id}>
+       <Link to={`/blogs/${post._id}`} className="text-decoration-none text-dark"> <div key={post._id}>
           <h4>{post.title}</h4>
           <h5>{post.user.email}</h5>
-        </div>
+        </div></Link>
       ))}
     </div>
   );

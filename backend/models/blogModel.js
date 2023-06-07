@@ -1,6 +1,5 @@
 const Blog = require("../schemas/blogSchema");
 
-
 exports.newPost = (req, res) => {
   const { title, body } = req.body;
 
@@ -29,6 +28,17 @@ exports.getAllPosts = (req, res) => {
     .populate("user")
     .then((data) => res.status(200).json(data))
     .catch(() => {
-      res.status(500).json({ message: "Could not create post" });
+      res.status(404).json({ message: "Could retrieve posts" });
+    });
+};
+
+exports.getPostById = (req, res) => {
+  const postId = req.params.id;
+
+  Blog.findById(postId)
+    .populate("user")
+    .then((data) => res.status(200).json(data))
+    .catch(() => {
+      restart.status(404).json({ message: "Could not retreive post" });
     });
 };
