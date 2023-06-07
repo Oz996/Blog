@@ -9,5 +9,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+app.use("/users", require("./controllers/userController"));
+app.use("/posts", require("./controllers/blogController"))
 
 module.exports = app;
