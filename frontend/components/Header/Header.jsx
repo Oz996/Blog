@@ -1,14 +1,51 @@
 import React from "react";
 import { FaBlog } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import useAuth from "../../src/hooks/useAuth";
 
 const Header = () => {
+  const { isAuthenticated, handleLogout } = useAuth();
   return (
-    <nav className="navbar bg-danger navbar-light d-flex justify-content-space-around">
+    <nav className="navbar bg-danger navbar-light">
       <FaBlog color="white" />
-      <NavLink className="text-uppercase text-decoration-none" style={{color: "white"}} to="">Blogs</NavLink>
-      <NavLink className="text-uppercase text-decoration-none" style={{color: "white"}} to="">Create</NavLink>
-      <NavLink className="text-uppercase text-decoration-none" style={{color: "white"}} to="">Login</NavLink>
+      <ul className="navbar-nav d-flex flex-row gap-5">
+        <li className="nav-item">
+          <NavLink
+            className="text-uppercase text-decoration-none text-light"
+            to=""
+          >
+            Blogs
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink
+            className="text-uppercase text-decoration-none text-light"
+            to="/create"
+          >
+            Create
+          </NavLink>
+        </li>
+        {isAuthenticated ? (
+          <li>
+            <NavLink
+              className="text-uppercase text-decoration-none text-light"
+              to="/login"
+              onClick={handleLogout}
+            >
+              Logout
+            </NavLink>
+          </li>
+        ) : (
+          <li className="nav-item">
+            <NavLink
+              className="text-uppercase text-decoration-none text-light"
+              to="/login"
+            >
+              Login
+            </NavLink>
+          </li>
+        )}
+      </ul>
     </nav>
   );
 };
