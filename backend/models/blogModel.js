@@ -39,6 +39,6 @@ exports.getPostById = (req, res) => {
     .populate("user")
     .then((data) => res.status(200).json(data))
     .catch(() => {
-      restart.status(404).json({ message: "Could not retreive post" });
+      res.status(404).json({ message: "Could not retreive post" }); 
     });
 };

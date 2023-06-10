@@ -32,8 +32,8 @@ const Create = () => {
             }}
             className="border rounded-3 p-3 my-3"
           >
-            <h4>{post.title}</h4>
-            <h5>{`By: ${post.user.email}`}</h5>
+            <h3>{post.title}</h3>
+            <h6>{`By: ${post.user.email}`}</h6>
             <p>{`Created at: ${post.createdAt}`}</p>
           </div>
         </Link>

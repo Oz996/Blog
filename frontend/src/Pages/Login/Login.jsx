@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { ImArrowRight } from "react-icons/im";
+import { toast } from "react-toastify";
 
 const initState = {
   email: "",
@@ -27,6 +29,7 @@ const Login = () => {
         const token = data.token;
         handleLogin(token);
         navigate("/");
+        toast.success("User logged in");
       }
     } catch (error) {
       console.error(error);
@@ -45,7 +48,12 @@ const Login = () => {
   return (
     <div>
       <form className="container" onSubmit={handleUserLogin}>
-        <h1 className="mb-4">Login</h1>
+        <h1 className="mb-4 mt-5">Login</h1>
+        <Link className="text-decoration-none text-dark" to="/register">
+          <p>
+            Register here <ImArrowRight />
+          </p>
+        </Link>
         <label>Email</label>
         <input
           className="form-control mb-3"

@@ -1,4 +1,5 @@
 const User = require("../schemas/userSchema");
+const Blog = require("../schemas/blogSchema");
 
 const secretKey = process.env.SECRET_KEY;
 const bcrypt = require("bcryptjs");
@@ -38,4 +39,33 @@ exports.loginUser = (req, res) => {
     const token = jwt.sign({ email: data.email, userId: data._id }, secretKey);
     res.json({ message: "User logged in", token });
   });
+};
+
+exports.getAllUsers = (req, res) => {
+  User.find()
+    .then((data) => res.status(200).json(data))
+    .catch(() => {
+      res.status(404).json({ message: "Could not retrieve users" });
+    });
+};
+
+exports.getUserById = (req,res) => {
+  const userId = req.params.id
+
+  User.findById(userId)
+  .then((data) => res.status(200).json(data))
+    .catch(() => {
+      res.status(404).json({ message: "Could not retreive user" }); 
+    });
+}
+
+exports.getUsersPosts = (req, res) => {
+  const userId = req.params.id;
+
+  Blog.find({ user: userId })
+    .populate("user")
+    .then((data) => res.status(200).json(data))
+    .catch(() => {
+      res.status(404).json({ message: "Could not find users posts" });
+    });
 };

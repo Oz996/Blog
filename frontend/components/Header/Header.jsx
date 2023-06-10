@@ -1,18 +1,28 @@
-import React from "react";
-import { FaBlog } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import React, {  useState } from "react";
+import { FaBlog, FaUser } from "react-icons/fa";
+import { NavLink} from "react-router-dom";
 import useAuth from "../../src/hooks/useAuth";
 
+
 const Header = () => {
-  const { isAuthenticated, handleLogout } = useAuth();
+  const { isAuthenticated, userId ,handleLogout } = useAuth();
+  
+
   return (
     <nav className="navbar bg-danger navbar-light">
       <FaBlog color="white" />
       <ul className="navbar-nav d-flex flex-row gap-5">
+        {isAuthenticated && (
+          <li className="nav-item">
+            <NavLink to={`/profile/${userId}`}>
+              <FaUser className="text-light"/>
+            </NavLink>
+          </li>
+        )}
         <li className="nav-item">
           <NavLink
             className="text-uppercase text-decoration-none text-light"
-            to=""
+            to="/"
           >
             Blogs
           </NavLink>
@@ -46,6 +56,7 @@ const Header = () => {
           </li>
         )}
       </ul>
+      
     </nav>
   );
 };
