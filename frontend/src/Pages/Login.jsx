@@ -12,12 +12,23 @@ const initState = {
 
 const Login = () => {
   const [formData, setFormData] = useState(initState);
+  const [error, setError] = useState("");
 
   const { handleLogin } = useAuth();
   const navigate = useNavigate();
 
   const handleUserLogin = async (e) => {
     e.preventDefault();
+    const { email, password } = formData;
+
+    if (email.length < 1 || password.length < 1) {
+      setError("Wrong email/password");
+      setTimeout(() => {
+        setError("");
+      }, 3000);
+      return;
+    }
+
     try {
       const res = await axios.post(
         "http://localhost:7700/users/login",
@@ -30,7 +41,7 @@ const Login = () => {
         const email = formData.email;
         handleLogin(token, email);
         navigate("/");
-        toast.success(`Welcome ${formData.email}`);
+        toast.success(`Welcome ${email}`);
       }
     } catch (error) {
       console.error(error);
@@ -70,6 +81,7 @@ const Login = () => {
           onChange={handleChange}
         />
         <button className="btn btn-primary mt-3">Login</button>
+        {error && <p className="text-danger">{error}</p>}
       </form>
     </div>
   );

@@ -8,6 +8,7 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Profile from "./Pages/Profile";
 import UserPosts from "./Pages/UserPosts";
+import EditPost from "./Pages/EditPost";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/profile/" element={<Profile />} />
         <Route path="/profile/:id" element={<UserPosts />} />
+        <Route path="/post/:id" element={<EditPost />} />
       </Routes>
     </>
   );

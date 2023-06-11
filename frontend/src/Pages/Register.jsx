@@ -11,6 +11,7 @@ const initState = {
 
 const Register = () => {
   const [formData, setFormData] = useState(initState);
+  const [error, setError] = useState("")
 
   const navigate = useNavigate();
 
@@ -20,11 +21,22 @@ const Register = () => {
     const { email, password, confirm } = formData;
 
     if (password !== confirm) {
-      console.log("error");
+      setError("Passwords do not mach")
+      setTimeout(() => {
+        setError("")
+      }, 3000);;
       return;
     }
 
+    if(email === "" || password === "" ||confirm === "") {
+      setError("Fields cannot be empty")
+      setTimeout(() => {
+        setError("")
+      }, 3000);
+      return
+    }
     try {
+
       const res = await axios.post("http://localhost:7700/users/register", {
         email,
         password,
@@ -74,6 +86,7 @@ const Register = () => {
           onChange={handleChange}
         />
         <button className="mt-3 btn btn-primary">Register</button>
+        {error && <p className="text-danger">{error}</p>}
       </form>
     </div>
   );

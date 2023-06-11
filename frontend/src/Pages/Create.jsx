@@ -9,11 +9,28 @@ const initState = {
 
 const Create = () => {
   const [formData, setFormData] = useState(initState);
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
   const createPost = async (e) => {
     e.preventDefault();
+
+    if (formData.body === "" || formData.title === "") {
+      setError("Field cannot be empty");
+      setTimeout(() => {
+        setError("");
+      }, 3000);
+      return;
+    }
+
+    if (formData.title.length < 3) {
+      setError("Title cannot be less than 3 characters");
+      setTimeout(() => {
+        setError("");
+      }, 3000);
+      return;
+    }
     const token = localStorage.getItem("token");
     try {
       const res = await axios.post("http://localhost:7700/posts", formData, {
@@ -58,6 +75,7 @@ const Create = () => {
           onChange={handleChange}
         ></textarea>
         <button className="btn btn-primary mt-3">Submit</button>
+        {error && <p className="text-danger">{error}</p>}
       </form>
     </div>
   );
