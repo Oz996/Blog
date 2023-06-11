@@ -7,9 +7,9 @@ router.post("/login", userModel.loginUser)
 
 router.get('/posts/:id', userModel.getUsersPosts)
 
-router.get("/:id", userModel.getUserById)
+router.get("/", userModel.getUserByEmail)
 
-router.get("/", userModel.getAllUsers)
+router.get("/users", userModel.getAllUsers)
 
 
 module.exports = router;

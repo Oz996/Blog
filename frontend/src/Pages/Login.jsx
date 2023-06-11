@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import { ImArrowRight } from "react-icons/im";
 import { toast } from "react-toastify";
 
@@ -27,9 +27,10 @@ const Login = () => {
       if (res.status === 200) {
         const data = res.data;
         const token = data.token;
-        handleLogin(token);
+        const email = formData.email;
+        handleLogin(token, email);
         navigate("/");
-        toast.success("User logged in");
+        toast.success(`Welcome ${formData.email}`);
       }
     } catch (error) {
       console.error(error);

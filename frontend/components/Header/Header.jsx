@@ -5,7 +5,7 @@ import useAuth from "../../src/hooks/useAuth";
 
 
 const Header = () => {
-  const { isAuthenticated, userId ,handleLogout } = useAuth();
+  const { isAuthenticated, handleLogout } = useAuth();
   
 
   return (
@@ -14,7 +14,7 @@ const Header = () => {
       <ul className="navbar-nav d-flex flex-row gap-5">
         {isAuthenticated && (
           <li className="nav-item">
-            <NavLink to={`/profile/${userId}`}>
+            <NavLink to="/profile">
               <FaUser className="text-light"/>
             </NavLink>
           </li>

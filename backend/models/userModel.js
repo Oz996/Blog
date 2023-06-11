@@ -49,10 +49,10 @@ exports.getAllUsers = (req, res) => {
     });
 };
 
-exports.getUserById = (req,res) => {
-  const userId = req.params.id
+exports.getUserByEmail = (req,res) => {
+  const {email} = req.body
 
-  User.findById(userId)
+  User.findOne({email: email})
   .then((data) => res.status(200).json(data))
     .catch(() => {
       res.status(404).json({ message: "Could not retreive user" }); 
@@ -60,9 +60,9 @@ exports.getUserById = (req,res) => {
 }
 
 exports.getUsersPosts = (req, res) => {
-  const userId = req.params.id;
+   const userId = req.params.id;
 
-  Blog.find({ user: userId })
+  Blog.find({ user: userId})
     .populate("user")
     .then((data) => res.status(200).json(data))
     .catch(() => {
