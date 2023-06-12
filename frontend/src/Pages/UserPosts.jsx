@@ -5,7 +5,7 @@ import useAuth from "../hooks/useAuth";
 
 const UserPosts = () => {
   const [userPosts, setUserPosts] = useState([]);
-  const [idk, setIdk] = useState(false);
+  const [sameMail, setSameMail] = useState(false);
 
   const { id } = useParams();
   const { userEmail } = useAuth();
@@ -18,6 +18,7 @@ const UserPosts = () => {
       console.error(error);
     }
   };
+
   useEffect(() => {
     getUserPosts();
   }, []);
@@ -25,7 +26,7 @@ const UserPosts = () => {
   useEffect(() => {
     const foundPost = userPosts.find((post) => post.user.email === userEmail);
     if (foundPost) {
-      setIdk(true);
+      setSameMail(true);
     }
   }, [userPosts, userEmail]);
 
@@ -34,35 +35,48 @@ const UserPosts = () => {
   return (
     <div className="container mt-5">
       <h2 className="mb-4">User Posts</h2>
-      {idk ? (
+      {sameMail ? (
         <>
           {userPosts.map((post) => (
-            <Link to={`/post/${post._id}`} className="text-decoration-none text-dark" key={post._id}>
-              <div
-                style={{
-                  boxShadow: "0 2px 4px rgba(0,0,0,0.35)",
-                  width: "50rem",
-                }}
-                className="border rounded-3 p-3 my-3"
-              >
-                <h4>{post.title}</h4>
-                <div className="buttons mt-3 d-flex gap-3">
+            <div
+              key={post._id}
+              style={{
+                boxShadow: "0 2px 4px rgba(0,0,0,0.35)",
+                width: "50rem",
+              }}
+              className="border rounded-3 p-3 my-3"
+            >
+              <h4>{post.title}</h4>
+              <div className="buttons mt-3 d-flex gap-3">
+                <Link
+                  to={`/post/${post._id}`}
+                  className="text-decoration-none text-dark"
+                >
                   <button
                     className="btn btn-primary"
                     style={{ minWidth: "4.5rem" }}
                   >
                     Edit
                   </button>
+                </Link>
+                <Link
+                  to={`/post/${post._id}`}
+                  className="text-decoration-none text-dark"
+                >
                   <button className="btn btn-danger">Delete</button>
-                </div>
+                </Link>
               </div>
-            </Link>
+            </div>
           ))}
         </>
       ) : (
         <>
           {userPosts.map((post) => (
-            <Link to={`/post/${post._id}`} className="text-decoration-none text-dark" key={post._id}>
+            <Link
+              to={`/view/${post._id}`}
+              className="text-decoration-none text-dark"
+              key={post._id}
+            >
               <div
                 style={{
                   boxShadow: "0 2px 4px rgba(0,0,0,0.35)",

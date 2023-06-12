@@ -19,9 +19,9 @@ const Post = () => {
       {post && (
         <div className="container mt-5 text-center">
           <h2 className="mb-4">{post.title}</h2>
-          <p>{post.body}</p>
-          <p>{`Posted by ${post.user.email}`}</p>
-          <p>{`at ${post.createdAt}`}</p>
+          <p className="fs-5">{post.body}</p>
+          <p className="fw-light mt-5">{`Posted by: ${post.user.email}`}</p>
+          <p className="fw-light">{`at: ${post.createdAt}`}</p>
         </div>
       )}
     </div>

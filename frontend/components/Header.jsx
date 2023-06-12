@@ -1,21 +1,21 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { FaBlog, FaUser } from "react-icons/fa";
-import { NavLink} from "react-router-dom";
-import useAuth from "../../src/hooks/useAuth";
-
+import { NavLink } from "react-router-dom";
+import useAuth from "../src/hooks/useAuth";
 
 const Header = () => {
   const { isAuthenticated, handleLogout } = useAuth();
-  
 
   return (
-    <nav className="navbar bg-danger navbar-light">
-      <FaBlog color="white" />
-      <ul className="navbar-nav d-flex flex-row gap-5">
+    <nav className="navbar bg-danger navbar-light d-flex justify-content-center">
+      <ul className="navbar-nav flex-row gap-5 align-items-center">
+        <NavLink to="/">
+          <FaBlog size={25} color="white" />
+        </NavLink>
         {isAuthenticated && (
           <li className="nav-item">
             <NavLink to="/profile">
-              <FaUser className="text-light"/>
+              <FaUser className="text-light" />
             </NavLink>
           </li>
         )}
@@ -56,7 +56,6 @@ const Header = () => {
           </li>
         )}
       </ul>
-      
     </nav>
   );
 };

@@ -2,9 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import DeleteModal from "../../components/DeleteModal";
 
 const EditPost = () => {
   const [post, setPost] = useState([]);
+  const [modal, setModal] = useState(false)
 
   const [formData, setFormData] = useState({
     title: "",
@@ -62,6 +64,7 @@ const EditPost = () => {
 
   return (
     <div className="container mt-5">
+      {modal && <DeleteModal/>}
       {post && (
         <form onSubmit={updatePost}>
           <label>Title</label>
@@ -86,7 +89,9 @@ const EditPost = () => {
             <button type="submit" className="btn btn-primary">
               Submit
             </button>
-            <button className="btn btn-danger">Delete</button>
+            <button className="btn btn-danger" onClick={(e) => {setModal(prev => !prev); e.preventDefault()}}>
+              Delete
+            </button>
           </div>
         </form>
       )}

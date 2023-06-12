@@ -15,8 +15,9 @@ const Create = () => {
 
   const createPost = async (e) => {
     e.preventDefault();
+    const {body, title} = formData
 
-    if (formData.body === "" || formData.title === "") {
+    if (body === "" || title === "") {
       setError("Field cannot be empty");
       setTimeout(() => {
         setError("");
@@ -24,7 +25,7 @@ const Create = () => {
       return;
     }
 
-    if (formData.title.length < 3) {
+    if (title.length < 3) {
       setError("Title cannot be less than 3 characters");
       setTimeout(() => {
         setError("");

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Create = () => {
+const Blogs = () => {
   const [posts, setPosts] = useState([]);
 
   const getPosts = async () => {
@@ -14,7 +14,7 @@ const Create = () => {
     getPosts();
   });
   return (
-    <div className="container d-flex flex-column align-items-center">
+    <div className="container d-flex flex-column align-items-center mb-3">
       <h1 className="my-5">Latest Blogs</h1>
 
       {posts.map((post) => (
@@ -23,7 +23,6 @@ const Create = () => {
           className="text-decoration-none text-dark"
           key={post._id}
         >
-          {" "}
           <div
             style={{
               boxShadow: "0 2px 4px rgba(0,0,0,0.35)",
@@ -42,4 +41,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default Blogs;
