@@ -22,7 +22,7 @@ const ViewPost = () => {
     getPost();
   }, []);
   return (
-    <div className="container mt-5 text-center">
+    <div className="container mt-5 d-flex flex-column align-items-center">
       {post && (
         <>
           <h2 className="mb-4">{post.title}</h2>

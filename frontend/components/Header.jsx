@@ -7,11 +7,18 @@ const Header = () => {
   const { isAuthenticated, handleLogout } = useAuth();
 
   return (
-    <nav className="navbar bg-danger navbar-light d-flex justify-content-center">
-      <ul className="navbar-nav flex-row gap-5 align-items-center">
-        <NavLink to="/">
-          <FaBlog size={25} color="white" />
-        </NavLink>
+    <nav className="navbar bg-danger navbar-light d-flex">
+      <NavLink
+        to="/"
+        className="d-flex align-items-center text-decoration-none text-light gap-3"
+        style={{ position: "absolute", left: "17%" }}
+      >
+        <FaBlog size={30} color="white" />
+      </NavLink>
+      <ul
+        className="navbar-nav flex-row gap-5 align-items-center"
+        style={{ position: "relative", left: "66%" }}
+      >
         {isAuthenticated && (
           <li className="nav-item">
             <NavLink to="/profile">

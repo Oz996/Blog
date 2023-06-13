@@ -17,7 +17,7 @@ const Post = () => {
   return (
     <div>
       {post && (
-        <div className="container mt-5 text-center">
+        <div className="container mt-5 d-flex flex-column align-items-center">
           <h2 className="mb-4">{post.title}</h2>
           <p className="fs-5">{post.body}</p>
           <p className="fw-light mt-5">{`Posted by: ${post.user.email}`}</p>
