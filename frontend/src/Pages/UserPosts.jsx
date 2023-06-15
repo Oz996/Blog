@@ -33,7 +33,7 @@ const UserPosts = () => {
   console.log(userPosts);
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 w-50">
       <h2 className="mb-4">User Posts</h2>
       {sameMail ? (
         <>
@@ -42,7 +42,6 @@ const UserPosts = () => {
               key={post._id}
               style={{
                 boxShadow: "0 2px 4px rgba(0,0,0,0.35)",
-                width: "50rem",
               }}
               className="border rounded-3 p-3 my-3"
             >

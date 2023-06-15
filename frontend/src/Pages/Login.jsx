@@ -59,13 +59,9 @@ const Login = () => {
 
   return (
     <div>
-      <form className="container" onSubmit={handleUserLogin}>
-        <h1 className="mb-4 mt-5">Login</h1>
-        <Link className="text-decoration-none text-dark" to="/register">
-          <p>
-            Register here <ImArrowRight />
-          </p>
-        </Link>
+      <form className="container w-25" onSubmit={handleUserLogin}>
+        <h1 className="mb-4 mt-5 text-center">Login</h1>
+
         <label>Email</label>
         <input
           className="form-control mb-3"
@@ -80,7 +76,12 @@ const Login = () => {
           name="password"
           onChange={handleChange}
         />
-        <button className="btn btn-primary mt-3">Login</button>
+                <Link className="text-decoration-none text-dark" to="/register">
+          <p className="mt-2">
+            Register here <ImArrowRight />
+          </p>
+        </Link>
+        <button className="btn btn-primary mt-1">Login</button>
         {error && <p className="text-danger">{error}</p>}
       </form>
     </div>

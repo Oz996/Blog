@@ -62,8 +62,8 @@ const Register = () => {
 
   return (
     <div>
-      <form className="container" onSubmit={handleRegisterUser}>
-        <h1 className="mb-4 mt-5">Register</h1>
+      <form className="container w-25" onSubmit={handleRegisterUser}>
+        <h1 className="mb-4 mt-5 text-center">Register</h1>
         <label>Email</label>
         <input
           type="email"

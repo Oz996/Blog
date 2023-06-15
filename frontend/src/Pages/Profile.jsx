@@ -26,7 +26,7 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container w-50">
       <h3 className="mt-5">Welcome {userEmail}</h3>
       <button
         onClick={() => {
@@ -47,8 +47,6 @@ const Profile = () => {
           <div
             style={{
               boxShadow: "0 2px 4px rgba(0,0,0,0.35)",
-              width: "50rem",
-              alignItems: "center",
             }}
             className="border rounded-3 p-3 my-3"
           >

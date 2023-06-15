@@ -14,8 +14,8 @@ const Blogs = () => {
     getPosts();
   });
   return (
-    <div className="container d-flex flex-column align-items-center mb-3">
-      <h1 className="my-5">Latest Blogs</h1>
+    <div className="container d-flex flex-column mb-3 w-50">
+      <h1 className="my-5 text-center">Latest Blogs</h1>
 
       {posts.map((post) => (
         <Link
@@ -26,10 +26,9 @@ const Blogs = () => {
           <div
             style={{
               boxShadow: "0 2px 4px rgba(0,0,0,0.35)",
-              width: "50rem",
               alignItems: "center",
             }}
-            className="border rounded-3 p-3 my-3"
+            className="border rounded-3 p-3 my-3 w-"
           >
             <h3>{post.title}</h3>
             <h6>{`By: ${post.user.email}`}</h6>

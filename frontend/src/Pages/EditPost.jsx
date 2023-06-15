@@ -63,7 +63,7 @@ const EditPost = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 w-50">
       {modal && <DeleteModal/>}
       {post && (
         <form onSubmit={updatePost}>

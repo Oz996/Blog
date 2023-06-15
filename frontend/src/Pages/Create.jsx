@@ -58,8 +58,8 @@ const Create = () => {
 
   return (
     <div>
-      <form className="container mt-5" onSubmit={createPost}>
-        <h1 className="mb-4">New Blog Post</h1>
+      <form className="container mt-5 w-50" onSubmit={createPost}>
+        <h1 className="mb-4 text-center">New Blog Post</h1>
         <label>Post title</label>
         <input
           name="title"

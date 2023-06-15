@@ -7,17 +7,17 @@ const Header = () => {
   const { isAuthenticated, handleLogout } = useAuth();
 
   return (
-    <nav className="navbar bg-danger navbar-light d-flex">
+    <nav className="navbar navbar-expand bg-danger navbar-light d-flex">
+      <div className="container">
       <NavLink
         to="/"
-        className="d-flex align-items-center text-decoration-none text-light gap-3"
-        style={{ position: "absolute", left: "17%" }}
+        className="d-flex align-items-center text-decoration-none text-light ms-5"
       >
         <FaBlog size={30} color="white" />
       </NavLink>
       <ul
-        className="navbar-nav flex-row gap-5 align-items-center"
-        style={{ position: "relative", left: "66%" }}
+        className="navbar-nav flex-row gap-5 me-5 ms-auto"
+
       >
         {isAuthenticated && (
           <li className="nav-item">
@@ -63,6 +63,7 @@ const Header = () => {
           </li>
         )}
       </ul>
+      </div>
     </nav>
   );
 };
