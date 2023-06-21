@@ -13,7 +13,8 @@
   },
   "scripts": {
     "dev": "nodemon server",
-    "start": "concurrently \"nodemon server\" \"cd.. && cd frontend && npm run dev\""
+    "start": "concurrently \"nodemon server\" \"cd.. && cd frontend && npm run dev\"",
+    "install": "concurrently \"npm install\" \"cd.. && cd frontend && npm install\""
   },
   "name": "backend",
   "version": "1.0.0",
