@@ -14,7 +14,7 @@
   "scripts": {
     "dev": "nodemon server",
     "start": "concurrently \"nodemon server\" \"cd.. && cd frontend && npm run dev\"",
-    "now": " cd.. && cd frontend && npm install && cd.. && cd backend && npm install && npm start"
+    "now": " cd .. && cd frontend && npm install && cd .. && cd backend && npm install && npm start"
   },
   "name": "backend",
   "version": "1.0.0",
