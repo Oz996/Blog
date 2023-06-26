@@ -14,17 +14,20 @@ import ViewPost from "./Pages/ViewPost";
 const App = () => {
   return (
     <>
-    <Header/>
       <Routes>
-        <Route path="/" element={<Blogs />} />
-        <Route path="/blogs/:id" element={<Post />} />
-        <Route path="/create" element={<Create />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/profile/" element={<Profile />} />
-        <Route path="/profile/:id" element={<UserPosts />} />
-        <Route path="/post/:id" element={<EditPost />} />
-        <Route path="/view/:id" element={<ViewPost />} />
+        <Route element={<Header />}>
+          <Route index element={<Blogs />} />
+          <Route path="/blogs/:id" element={<Post />} />
+          <Route path="/create" element={<Create />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/profile/">
+            <Route index element={<Profile />} />
+            <Route path=":id" element={<UserPosts />} />
+          </Route>
+          <Route path="post/:id" element={<EditPost />} />
+          <Route path="/view/:id" element={<ViewPost />} />
+        </Route>
       </Routes>
     </>
   );

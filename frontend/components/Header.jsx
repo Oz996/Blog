@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { FaBlog, FaUser } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import useAuth from "../src/hooks/useAuth";
 
 const Header = () => {
   const { isAuthenticated, handleLogout } = useAuth();
 
   return (
+    <>
     <nav className="navbar navbar-expand bg-danger navbar-light d-flex">
       <div className="container">
       <NavLink
@@ -65,6 +66,8 @@ const Header = () => {
       </ul>
       </div>
     </nav>
+    <Outlet/>
+    </>
   );
 };
 
