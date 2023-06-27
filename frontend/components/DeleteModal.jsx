@@ -23,7 +23,7 @@ function DeleteModal() {
   const deletePost = async () => {
     const token = localStorage.getItem("token");
     try {
-      await axios.delete(`http://localhost:7700/posts/${id}`, {
+      await axios.delete(`https://blogs-e9qa.onrender.com/posts/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
