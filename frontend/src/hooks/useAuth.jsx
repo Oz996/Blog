@@ -17,7 +17,6 @@ const useAuth = () => {
 
     localStorage.setItem("email", email);
     setUserEmail(email);
-    console.log(email)
   };
 
   const handleLogout = () => {

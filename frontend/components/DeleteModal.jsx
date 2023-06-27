@@ -1,20 +1,14 @@
 import axios from "axios";
-import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-function DeleteModal() {
-  const [show, setShow] = useState(true);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+function DeleteModal({ setModal }) {
   const handleNavigate = () => {
     setShow(false);
     navigate("/profile");
-    toast.success("Post deleted")
+    toast.success("Post deleted");
   };
 
   const { id } = useParams();
@@ -35,16 +29,22 @@ function DeleteModal() {
 
   return (
     <>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={() => setModal(true)} onHide={() => setModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Warning</Modal.Title>
         </Modal.Header>
         <Modal.Body>Do you really want to delete post?</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={() => setModal(false)}>
             Close
           </Button>
-          <Button variant="danger" onClick={()=> {deletePost(); handleNavigate()}}>
+          <Button
+            variant="danger"
+            onClick={() => {
+              deletePost();
+              handleNavigate();
+            }}
+          >
             Delete
           </Button>
         </Modal.Footer>

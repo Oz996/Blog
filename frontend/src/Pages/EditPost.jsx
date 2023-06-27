@@ -64,7 +64,7 @@ const EditPost = () => {
 
   return (
     <div className="container mt-5 w-50">
-      {modal && <DeleteModal/>}
+      {modal && <DeleteModal setModal={setModal}/>}
       {post && (
         <form onSubmit={updatePost}>
           <label>Title</label>
@@ -89,7 +89,7 @@ const EditPost = () => {
             <button type="submit" className="btn btn-primary">
               Submit
             </button>
-            <button className="btn btn-danger" onClick={(e) => {setModal(prev => !prev); e.preventDefault()}}>
+            <button className="btn btn-danger" onClick={(e) => {setModal(true); e.preventDefault()}}>
               Delete
             </button>
           </div>

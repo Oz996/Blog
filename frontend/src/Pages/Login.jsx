@@ -34,7 +34,6 @@ const Login = () => {
         "https://blogs-api-821q.onrender.com/users/login",
         formData
       );
-      console.log(res);
       if (res.status === 200) {
         const data = res.data;
         const token = data.token;

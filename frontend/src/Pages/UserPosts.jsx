@@ -30,8 +30,6 @@ const UserPosts = () => {
     }
   }, [userPosts, userEmail]);
 
-  console.log(userPosts);
-
   return (
     <div className="container mt-5 w-50">
       <h2 className="mb-4">User Posts</h2>
