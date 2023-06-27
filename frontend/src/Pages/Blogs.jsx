@@ -6,7 +6,7 @@ const Blogs = () => {
   const [posts, setPosts] = useState([]);
 
   const getPosts = async () => {
-    const res = await axios.get("http://localhost:7700/posts");
+    const res = await axios.get("https://blogs-api-821q.onrender.com/posts");
     setPosts(res.data);
   };
 

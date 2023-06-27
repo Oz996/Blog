@@ -10,7 +10,7 @@ const Profile = () => {
 
   const getUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:7700/users/users");
+      const res = await axios.get("https://blogs-api-821q.onrender.com/users/users");
 
       if (res.status === 200) {
         const user = res.data;

@@ -34,7 +34,7 @@ const Create = () => {
     }
     const token = localStorage.getItem("token");
     try {
-      const res = await axios.post("http://localhost:7700/posts", formData, {
+      const res = await axios.post("https://blogs-api-821q.onrender.com/posts", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

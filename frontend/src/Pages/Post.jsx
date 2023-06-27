@@ -7,7 +7,7 @@ const Post = () => {
   const [post, setPost] = useState();
 
   const getPost = async () => {
-    const res = await axios.get(`http://localhost:7700/posts/${id}`);
+    const res = await axios.get(`https://blogs-api-821q.onrender.com/posts/${id}`);
     setPost(res.data);
   };
 

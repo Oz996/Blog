@@ -12,7 +12,7 @@ const UserPosts = () => {
 
   const getUserPosts = async () => {
     try {
-      const res = await axios.get(`http://localhost:7700/users/posts/${id}`);
+      const res = await axios.get(`https://blogs-api-821q.onrender.com/users/posts/${id}`);
       setUserPosts(res.data);
     } catch (error) {
       console.error(error);

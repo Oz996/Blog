@@ -31,7 +31,7 @@ const Login = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:7700/users/login",
+        "https://blogs-api-821q.onrender.com/users/login",
         formData
       );
       console.log(res);

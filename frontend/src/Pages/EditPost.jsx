@@ -21,7 +21,7 @@ const EditPost = () => {
 
   const getPost = async () => {
     try {
-      const res = await axios.get(`http://localhost:7700/posts/${id}`);
+      const res = await axios.get(`https://blogs-api-821q.onrender.com/posts/${id}`);
       if (res.status === 200) {
         setPost(res.data);
       }
@@ -38,7 +38,7 @@ const EditPost = () => {
     const token = localStorage.getItem("token");
     try {
       const res = await axios.put(
-        `http://localhost:7700/posts/${id}`,
+        `https://blogs-api-821q.onrender.com/posts/${id}`,
         formData,
         {
           headers: { Authorization: `Bearer ${token}` },

@@ -9,7 +9,7 @@ const ViewPost = () => {
 
   const getPost = async () => {
     try {
-      const res = await axios.get(`http://localhost:7700/posts/${id}`);
+      const res = await axios.get(`https://blogs-api-821q.onrender.com/posts/${id}`);
       if (res.status === 200) {
         setPost(res.data);
       }
