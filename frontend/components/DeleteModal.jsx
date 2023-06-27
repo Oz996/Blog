@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 function DeleteModal({ setModal }) {
   const handleNavigate = () => {
-    setShow(false);
+    setModal(false);
     navigate("/profile");
     toast.success("Post deleted");
   };
