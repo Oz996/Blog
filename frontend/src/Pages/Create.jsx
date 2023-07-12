@@ -13,9 +13,9 @@ const Create = () => {
 
   const navigate = useNavigate();
 
-  const createPost = async (e) => {
+  const handleCreatePost = async (e) => {
     e.preventDefault();
-    const {body, title} = formData
+    const { body, title } = formData;
 
     if (body === "" || title === "") {
       setError("Field cannot be empty");
@@ -32,19 +32,22 @@ const Create = () => {
       }, 3000);
       return;
     }
-    const token = localStorage.getItem("token");
-    try {
-      const res = await axios.post("https://blogs-api-821q.onrender.com/posts", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      if (res.status === 201) {
-        navigate("/");
-      }
-    } catch (error) {
-      console.error(error);
-    }
+
+    // const token = localStorage.getItem("token");
+    // try {
+    //   const res = await axios.post("https://blogs-api-821q.onrender.com/posts", formData, {
+    //     headers: {
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //   });
+    //   if (res.status === 201) {
+    //     navigate("/");
+    //   }
+    // } catch (error) {
+    //   console.error(error);
+    // }
+
+    
   };
 
   const handleChange = (e) => {
@@ -58,7 +61,7 @@ const Create = () => {
 
   return (
     <div>
-      <form className="container mt-5 w-50" onSubmit={createPost}>
+      <form className="container mt-5 min-w-50" onSubmit={handleCreatePost}>
         <h1 className="mb-4 text-center">New Blog Post</h1>
         <label>Post title</label>
         <input

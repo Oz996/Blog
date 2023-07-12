@@ -1,24 +1,36 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import Loader from "../utils/Loader/Loader";
+import { useQuery } from "@tanstack/react-query";
+import { getPosts } from "../hooks/usePosts";
 
 const Blogs = () => {
-  const [posts, setPosts] = useState([]);
-
-  const getPosts = async () => {
-    const res = await axios.get("https://blogs-api-821q.onrender.com/posts");
-    setPosts(res.data);
-  };
-
-  useEffect(() => {
-    getPosts();
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["posts"],
+    queryFn: getPosts,
   });
 
+  // const getPosts = async () => {
+  //   const res = await axios.get("https://blogs-api-821q.onrender.com/posts");
+  //   setPosts(res.data);
+  // };
+
+  // useEffect(() => {
+  //   getPosts();
+  // });
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (isError) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
-    <div className="container d-flex flex-column mb-3 w-50">
+    <section className="container d-flex flex-column mb-3 w-50">
       <h1 className="my-5 text-center">Latest Blogs</h1>
 
-      {posts.map((post) => (
+      {data?.map((post) => (
         <Link
           to={`/blogs/${post._id}`}
           className="text-decoration-none text-dark"
@@ -32,14 +44,17 @@ const Blogs = () => {
             className="border rounded-3 p-3 my-3 w-"
           >
             <h3>{post.title}</h3>
-            {post.body.length > 80 ? <p className="my-3 fs-5">{post.body.substring(0,80)}...</p>
-            : <p className="my-3 fs-5">{post.body}</p>}
+            {post.body.length > 80 ? (
+              <p className="my-3 fs-5">{post.body.substring(0, 80)}...</p>
+            ) : (
+              <p className="my-3 fs-5">{post.body}</p>
+            )}
             <h6>{`By: ${post.user.email}`}</h6>
             <p>{`Created at: ${post.createdAt}`}</p>
           </div>
         </Link>
       ))}
-    </div>
+    </section>
   );
 };
 

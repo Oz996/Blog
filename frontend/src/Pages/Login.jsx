@@ -57,8 +57,8 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <form className="container w-25" onSubmit={handleUserLogin}>
+    <section>
+      <form className="w-25 mx-auto" onSubmit={handleUserLogin}>
         <h1 className="mb-4 mt-5 text-center">Login</h1>
 
         <label>Email</label>
@@ -83,7 +83,7 @@ const Login = () => {
         <button className="btn btn-primary mt-1">Login</button>
         {error && <p className="text-danger">{error}</p>}
       </form>
-    </div>
+    </section>
   );
 };
 

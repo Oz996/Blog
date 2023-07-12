@@ -1,19 +1,27 @@
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getPost } from "../hooks/usePosts";
 
 const Post = () => {
-  const { id } = useParams();
-  const [post, setPost] = useState();
+  // const { id } = useParams();
+  // const [post, setPost] = useState();
 
-  const getPost = async () => {
-    const res = await axios.get(`https://blogs-api-821q.onrender.com/posts/${id}`);
-    setPost(res.data);
-  };
+  // const getPost = async () => {
+  //   const res = await axios.get(`https://blogs-api-821q.onrender.com/posts/${id}`);
+  //   setPost(res.data);
+  // };
 
-  useEffect(() => {
-    getPost();
-  }, [id]);
+  // useEffect(() => {
+  //   getPost();
+  // }, [id]);
+
+  const {data: post} = useQuery({
+    queryKey: ["posts"],
+    queryFn: getPost
+  })
+
   return (
     <div>
       {post && (

@@ -59,5 +59,7 @@ exports.deletePost = (req, res) => {
 
   Blog.findByIdAndDelete(postId).then(
     res.status(410).json({ message: "Post deleted" })
-  );
+  ).catch(() => {
+    res.status(404).json({ message: "Could not delete post" });
+  })
 };
