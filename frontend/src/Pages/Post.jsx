@@ -1,26 +1,21 @@
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getPost } from "../hooks/usePosts";
 
 const Post = () => {
-  // const { id } = useParams();
-  // const [post, setPost] = useState();
+  const { id } = useParams();
+  const [post, setPost] = useState();
+  console.log(post)
 
-  // const getPost = async () => {
-  //   const res = await axios.get(`https://blogs-api-821q.onrender.com/posts/${id}`);
-  //   setPost(res.data);
-  // };
+  const getPost = async () => {
+    const res = await axios.get(`https://blogs-api-821q.onrender.com/posts/${id}`);
+    setPost(res.data);
+  };
 
-  // useEffect(() => {
-  //   getPost();
-  // }, [id]);
+  useEffect(() => {
+    getPost();
+  }, [id]);
 
-  const {data: post} = useQuery({
-    queryKey: ["posts"],
-    queryFn: getPost
-  })
 
   return (
     <div>
@@ -28,7 +23,7 @@ const Post = () => {
         <div className="container mt-5 d-flex flex-column align-items-center">
           <h2 className="mb-4">{post.title}</h2>
           <p className="fs-5">{post.body}</p>
-          <p className="fw-light mt-5">{`Posted by: ${post.user.email}`}</p>
+          <p className="fw-light mt-5">{`Posted by: ${post?.user?.email}`}</p>
           <p className="fw-light">{`at: ${post.createdAt}`}</p>
         </div>
       )}

@@ -75,7 +75,7 @@ const Login = () => {
           name="password"
           onChange={handleChange}
         />
-                <Link className="text-decoration-none text-dark" to="/register">
+        <Link className="text-decoration-none text-dark" to="/register">
           <p className="mt-2">
             Register here <ImArrowRight />
           </p>

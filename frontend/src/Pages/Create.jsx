@@ -33,19 +33,19 @@ const Create = () => {
       return;
     }
 
-    // const token = localStorage.getItem("token");
-    // try {
-    //   const res = await axios.post("https://blogs-api-821q.onrender.com/posts", formData, {
-    //     headers: {
-    //       Authorization: `Bearer ${token}`,
-    //     },
-    //   });
-    //   if (res.status === 201) {
-    //     navigate("/");
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    const token = localStorage.getItem("token");
+    try {
+      const res = await axios.post("https://blogs-api-821q.onrender.com/posts", formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (res.status === 201) {
+        navigate("/");
+      }
+    } catch (error) {
+      console.error(error);
+    }
 
     
   };

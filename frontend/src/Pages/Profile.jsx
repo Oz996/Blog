@@ -5,12 +5,14 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const [usersData, setUsersData] = useState([]);
-  const { userEmail, handleLogout } = useAuth();
+  const { userEmail, handleLogout, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   const getUsers = async () => {
     try {
-      const res = await axios.get("https://blogs-api-821q.onrender.com/users/users");
+      const res = await axios.get(
+        "https://blogs-api-821q.onrender.com/users/users"
+      );
 
       if (res.status === 200) {
         const user = res.data;
@@ -27,16 +29,32 @@ const Profile = () => {
 
   return (
     <div className="container w-50">
-      <h3 className="mt-5">Welcome {userEmail}</h3>
-      <button
-        onClick={() => {
-          handleLogout;
-          navigate("/");
-        }}
-        className="btn btn-danger"
-      >
-        Logout
-      </button>
+      {isAuthenticated ? (
+        <>
+          <h3 className="mt-5">Welcome {userEmail}</h3>
+          <button
+            onClick={() => {
+              handleLogout();
+              navigate("/");
+            }}
+            className="btn btn-danger"
+          >
+            Logout
+          </button>
+        </>
+      ) : (
+        <>
+          <h3 className="mt-5">Welcome {userEmail}</h3>
+          <button
+            onClick={() => {
+              navigate("/login");
+            }}
+            className="btn btn-primary"
+          >
+            Login
+          </button>
+        </>
+      )}
       <h4 className="mt-4">Users</h4>
       {usersData.map((user) => (
         <Link
