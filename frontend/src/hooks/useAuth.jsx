@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 const useAuth = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
   const [userEmail, setUserEmail] = useState(null);
-  console.log(isAuthenticated);
 
   useEffect(() => {
     const token = localStorage.getItem("token");

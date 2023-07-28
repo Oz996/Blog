@@ -42,7 +42,6 @@ const Register = () => {
         password,
       });
       if (res.status === 201) {
-        console.log(res.data);
         navigate("/login");
         toast.success("User registered")
       }

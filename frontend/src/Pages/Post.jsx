@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 const Post = () => {
   const { id } = useParams();
   const [post, setPost] = useState();
-  console.log(post)
 
   const getPost = async () => {
     const res = await axios.get(`https://blogs-api-821q.onrender.com/posts/${id}`);
